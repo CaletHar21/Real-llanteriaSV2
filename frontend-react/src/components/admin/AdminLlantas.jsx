@@ -319,23 +319,21 @@ const AdminLlantas = () => {
 
   return (
     <div className="admin-llantas-container">
-      <div className="row">
-        <div className="col-12">
-          <div className="admin-header">
-            <h1 className="admin-title">
-              <i className="fas fa-tire"></i> Gestión de Llantas
-            </h1>
-            {!showForm && (
-              <button
-                className="btn-agregar-nueva"
-                onClick={handleAddNew}
-              >
-                <i className="fas fa-plus"></i> Agregar Nueva Llanta
-              </button>
-            )}
-          </div>
+      <div className="admin-header">
+        <h1 className="admin-title">
+          <i className="fas fa-tire"></i> Gestión de Llantas
+        </h1>
+        {!showForm && (
+          <button
+            className="btn-agregar-nueva"
+            onClick={handleAddNew}
+          >
+            <i className="fas fa-plus"></i> Agregar Nueva Llanta
+          </button>
+        )}
+      </div>
 
-          {error && (
+      {error && (
             <div className="alert-custom alert-danger">
               <i className="fas fa-exclamation-circle alert-icon"></i>
               <div className="alert-content">{error}</div>
@@ -382,7 +380,6 @@ const AdminLlantas = () => {
                               <th>Medida Llanta</th>
                               <th>Precio</th>
                               <th>Condición</th>
-                              <th>Tipo Vehículo</th>
                               <th>Stock</th>
                               <th>Acciones</th>
                             </tr>
@@ -404,7 +401,6 @@ const AdminLlantas = () => {
                                     {llanta.CONDICION}
                                   </span>
                                 </td>
-                                <td>{llanta.TIPO_VEHICULO}</td>
                                 <td>{llanta.STOCK}</td>
                                 <td>
                                   <div className="action-buttons">
@@ -705,8 +701,6 @@ const AdminLlantas = () => {
               </div>
             </div>
           )}
-        </div>
-      </div>
     </div>
   );
 };

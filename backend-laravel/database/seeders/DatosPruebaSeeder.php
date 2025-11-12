@@ -38,6 +38,31 @@ class DatosPruebaSeeder extends Seeder
     {
         echo "📝 Insertando usuarios...\n";
         
+        // Usuario Admin de prueba
+        User::updateOrCreate(
+            ['email' => 'admin@test.com'],
+            [
+                'name' => 'Administrador',
+                'email' => 'admin@test.com',
+                'password' => Hash::make('admin123'),
+                'email_verified_at' => now(),
+            ]
+        );
+
+        Usuario::updateOrCreate(
+            ['CORREO' => 'admin@test.com'],
+            [
+                'NOMBRES' => 'Admin',
+                'APELLIDOS' => 'Sistema',
+                'CORREO' => 'admin@test.com',
+                'DUI' => '00000000-0',
+                'TELEFONO' => '0000-0000',
+                'DIRECCION' => 'Sistema',
+                'PASSWORD' => Hash::make('admin123'),
+                'ROL' => 'ADMIN'
+            ]
+        );
+        
         // Usuario Caleth en tabla users (Laravel estándar)
         User::updateOrCreate(
             ['email' => 'caleth.torrez17@itca.edu.sv'],
@@ -115,23 +140,40 @@ class DatosPruebaSeeder extends Seeder
                 'ROL' => 'CLIENTE'
             ]
         );
+
+        // Usuario Jorge Enrique Alfaro
+        Usuario::updateOrCreate(
+            ['CORREO' => 'jalfaro@itca.edu.sv'],
+            [
+                'NOMBRES' => 'Jorge Enrique',
+                'APELLIDOS' => 'Alfaro',
+                'CORREO' => 'jalfaro@itca.edu.sv',
+                'DUI' => '12345678-0',
+                'TELEFONO' => '7777-8888',
+                'DIRECCION' => 'San Salvador, El Salvador',
+                'PASSWORD' => Hash::make('123456789'),
+                'ROL' => 'ADMIN'
+            ]
+        );
         
         echo "✅ Usuarios creados en ambas tablas: users y usuarios\n";
     }
     
     private function crearMarcas()
     {
-        echo "📝 Insertando marcas...\n";
+        echo "📝 Insertando marcas de vehículos...\n";
         
         $marcasData = [
-            'Michelin',
-            'Bridgestone', 
-            'Pirelli',
-            'Goodyear',
-            'Continental',
-            'Firestone',
-            'Toyo',
-            'Yokohama'
+            'Toyota',
+            'Honda',
+            'Ford',
+            'Chevrolet',
+            'Nissan',
+            'Hyundai',
+            'Mazda',
+            'Volkswagen',
+            'Kia',
+            'Mitsubishi'
         ];
         
         $marcas = [];
@@ -143,23 +185,25 @@ class DatosPruebaSeeder extends Seeder
             $marcas[$nombreMarca] = $marca;
         }
         
-        echo "✅ Marcas creadas: " . implode(', ', $marcasData) . "\n";
+        echo "✅ Marcas de vehículos creadas: " . implode(', ', $marcasData) . "\n";
         return $marcas;
     }
     
     private function crearModelos($marcas)
     {
-        echo "📝 Insertando modelos...\n";
+        echo "📝 Insertando modelos de vehículos...\n";
         
         $modelosData = [
-            'Michelin' => ['Pilot Sport', 'Energy Saver', 'CrossClimate'],
-            'Bridgestone' => ['Potenza', 'Turanza', 'Ecopia'],
-            'Pirelli' => ['P Zero', 'Cinturato', 'Scorpion'],
-            'Goodyear' => ['Eagle F1', 'Assurance', 'Wrangler'],
-            'Continental' => ['PremiumContact', 'EcoContact', 'SportContact'],
-            'Firestone' => ['Firehawk', 'Destination', 'FR710'],
-            'Toyo' => ['Proxes', 'Open Country', 'Observe'],
-            'Yokohama' => ['Advan', 'Geolandar', 'BluEarth']
+            'Toyota' => ['Corolla', 'Camry', 'RAV4', 'Hilux', 'Yaris'],
+            'Honda' => ['Civic', 'Accord', 'CR-V', 'Fit', 'Pilot'],
+            'Ford' => ['Fiesta', 'Focus', 'Fusion', 'Escape', 'F-150'],
+            'Chevrolet' => ['Spark', 'Aveo', 'Cruze', 'Equinox', 'Silverado'],
+            'Nissan' => ['Sentra', 'Altima', 'Versa', 'X-Trail', 'Frontier'],
+            'Hyundai' => ['Accent', 'Elantra', 'Tucson', 'Santa Fe', 'Kona'],
+            'Mazda' => ['Mazda2', 'Mazda3', 'CX-3', 'CX-5', 'CX-9'],
+            'Volkswagen' => ['Polo', 'Jetta', 'Golf', 'Tiguan', 'Amarok'],
+            'Kia' => ['Rio', 'Forte', 'Sportage', 'Sorento', 'Soul'],
+            'Mitsubishi' => ['Mirage', 'Lancer', 'Outlander', 'Montero', 'L200']
         ];
         
         foreach ($modelosData as $marcaNombre => $modelos) {
@@ -179,7 +223,7 @@ class DatosPruebaSeeder extends Seeder
             }
         }
         
-        echo "✅ Modelos creados para todas las marcas\n";
+        echo "✅ Modelos de vehículos creados para todas las marcas\n";
     }
     
     private function crearLlantas()
@@ -187,7 +231,17 @@ class DatosPruebaSeeder extends Seeder
         echo "📝 Insertando llantas de prueba...\n";
         
         $llantasData = [
-            // MICHELIN - Gama Alta
+            [
+                'MARCA' => 'Bridgestone',
+                'MODELO_LLANTA' => 'Turanza T005',
+                'MEDIDA_RIN' => '16',
+                'MEDIDA_LLANTA' => '205/55R16',
+                'PRECIO' => 175.50,
+                'IMAGEN' => 'https://images.unsplash.com/photo-1544375665-2777e3b4ed1e?w=800&h=600&fit=crop&crop=center',
+                'CONDICION' => 'nueva',
+                'TIPO_VEHICULO' => 'Compacto',
+                'STOCK' => 22
+            ],
             [
                 'MARCA' => 'Michelin',
                 'MODELO_LLANTA' => 'Pilot Sport 4S',
@@ -221,19 +275,6 @@ class DatosPruebaSeeder extends Seeder
                 'TIPO_VEHICULO' => 'SUV',
                 'STOCK' => 18
             ],
-
-            // BRIDGESTONE - Confiabilidad
-            [
-                'MARCA' => 'Bridgestone',
-                'MODELO_LLANTA' => 'Turanza T005',
-                'MEDIDA_RIN' => '16',
-                'MEDIDA_LLANTA' => '205/55R16',
-                'PRECIO' => 175.50,
-                'IMAGEN' => 'https://images.unsplash.com/photo-1544375665-2777e3b4ed1e?w=800&h=600&fit=crop&crop=center',
-                'CONDICION' => 'nueva',
-                'TIPO_VEHICULO' => 'Compacto',
-                'STOCK' => 22
-            ],
             [
                 'MARCA' => 'Bridgestone',
                 'MODELO_LLANTA' => 'Potenza Sport',
@@ -256,8 +297,6 @@ class DatosPruebaSeeder extends Seeder
                 'TIPO_VEHICULO' => 'Ciudad',
                 'STOCK' => 30
             ],
-
-            // PIRELLI - Performance
             [
                 'MARCA' => 'Pirelli',
                 'MODELO_LLANTA' => 'P Zero',
@@ -280,19 +319,6 @@ class DatosPruebaSeeder extends Seeder
                 'TIPO_VEHICULO' => 'Familiar',
                 'STOCK' => 14
             ],
-
-            // GOODYEAR - Versatilidad
-            [
-                'MARCA' => 'Goodyear',
-                'MODELO_LLANTA' => 'Eagle F1 Sport',
-                'MEDIDA_RIN' => '18',
-                'MEDIDA_LLANTA' => '235/40R18',
-                'PRECIO' => 265.99,
-                'IMAGEN' => 'https://images.unsplash.com/photo-1619781142167-c4b21fc09b18?w=800&h=600&fit=crop&crop=center',
-                'CONDICION' => 'nueva',
-                'TIPO_VEHICULO' => 'Hatchback',
-                'STOCK' => 16
-            ],
             [
                 'MARCA' => 'Goodyear',
                 'MODELO_LLANTA' => 'Assurance Weather',
@@ -304,8 +330,6 @@ class DatosPruebaSeeder extends Seeder
                 'TIPO_VEHICULO' => 'Crossover',
                 'STOCK' => 20
             ],
-
-            // CONTINENTAL - Innovación
             [
                 'MARCA' => 'Continental',
                 'MODELO_LLANTA' => 'ContiSportContact 6',
@@ -328,8 +352,6 @@ class DatosPruebaSeeder extends Seeder
                 'TIPO_VEHICULO' => 'Ejecutivo',
                 'STOCK' => 18
             ],
-
-            // YOKOHAMA - Calidad Japonesa  
             [
                 'MARCA' => 'Yokohama',
                 'MODELO_LLANTA' => 'Advan Sport V105',
@@ -341,8 +363,6 @@ class DatosPruebaSeeder extends Seeder
                 'TIPO_VEHICULO' => 'Coupé',
                 'STOCK' => 12
             ],
-
-            // TOYO - Resistencia
             [
                 'MARCA' => 'Toyo',
                 'MODELO_LLANTA' => 'Proxes Sport',
@@ -354,8 +374,6 @@ class DatosPruebaSeeder extends Seeder
                 'TIPO_VEHICULO' => 'Compacto',
                 'STOCK' => 24
             ],
-
-            // FIRESTONE - Accesibilidad
             [
                 'MARCA' => 'Firestone',
                 'MODELO_LLANTA' => 'Destination HP',
@@ -366,6 +384,17 @@ class DatosPruebaSeeder extends Seeder
                 'CONDICION' => 'nueva',
                 'TIPO_VEHICULO' => 'SUV',
                 'STOCK' => 28
+            ],
+            [
+                'MARCA' => 'Goodyear',
+                'MODELO_LLANTA' => 'Eagle F1 Sport',
+                'MEDIDA_RIN' => '18',
+                'MEDIDA_LLANTA' => '235/40R18',
+                'PRECIO' => 265.99,
+                'IMAGEN' => 'https://images.unsplash.com/photo-1619781142167-c4b21fc09b18?w=800&h=600&fit=crop&crop=center',
+                'CONDICION' => 'nueva',
+                'TIPO_VEHICULO' => 'Hatchback',
+                'STOCK' => 16
             ]
         ];
         
@@ -380,6 +409,6 @@ class DatosPruebaSeeder extends Seeder
             );
         }
         
-        echo "✅ 15 llantas de diferentes marcas y modelos creadas\n";
+        echo "✅ 15 llantas con imágenes funcionales creadas\n";
     }
 }
