@@ -16,8 +16,12 @@ class DatabaseSeeder extends Seeder
 
 
     public function run(): void
-{
-    $this->call(DemoSeeder::class);
-}
+    {
+        // Ejecutar siempre los datos de prueba
+        $this->call([
+            DatosPruebaSeeder::class,
+            // DemoSeeder::class, // Deshabilitado temporalmente por tabla faltante
+        ]);
+    }
 
 }

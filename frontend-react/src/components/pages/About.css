@@ -36,19 +36,19 @@
 }
 
 .about-logo {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   margin-bottom: 2rem;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
   animation: slideInDown 0.6s ease-out;
 }
 
 .about-hero h1 {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   font-weight: 900;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 .about-tagline {
@@ -287,7 +287,7 @@
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .about-hero h1 {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
   }
 
   .about-tagline {
@@ -295,8 +295,8 @@
   }
 
   .about-logo {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
   }
 
   .about-section h2 {

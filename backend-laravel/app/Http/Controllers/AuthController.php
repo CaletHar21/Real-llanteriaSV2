@@ -91,15 +91,25 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // Log para ver qué datos llegan
+        \Log::info('🔍 LOGIN - Datos recibidos:', $request->all());
+        
         $fields = $request->validate([
             'CORREO' => 'required|string|email',
             'PASSWORD' => 'required|string',
         ]);
 
+        \Log::info('🔍 LOGIN - Email buscado:', [strtolower($fields['CORREO'])]);
         $usuario = Usuario::where('CORREO', strtolower($fields['CORREO']))->first();
+        \Log::info('🔍 LOGIN - Usuario encontrado:', $usuario ? ['id' => $usuario->id, 'email' => $usuario->CORREO] : ['encontrado' => false]);
 
         if (!$usuario || !Hash::check($fields['PASSWORD'], $usuario->PASSWORD)) {
-            return response()->json(['mensaje' => '❌ Credenciales inválidas'], 401);
+            \Log::info('🔍 LOGIN - Fallo autenticación:', [
+                'usuario_existe' => $usuario ? true : false,
+                'password_match' => $usuario ? Hash::check($fields['PASSWORD'], $usuario->PASSWORD) : false,
+                'password_enviado' => $fields['PASSWORD']
+            ]);
+            return response()->json(['mensaje' => '❌ Correo electrónico o contraseña incorrectos'], 401);
         }
 
         $usuario->load(['vehiculos.marca', 'vehiculos.modelo']);

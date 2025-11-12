@@ -26,6 +26,10 @@ export default function LoginForm() {
       }
 
       setSuccess('✅ Iniciando sesión...');
+      
+      // Pequeña pausa para que el usuario vea el mensaje
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
       const { token, usuario } = await apiLogin({ 
         CORREO: correo.toLowerCase(), 
         PASSWORD: password 
@@ -41,7 +45,7 @@ export default function LoginForm() {
       setTimeout(() => navigate('/perfil'), 1500);
     } catch (err) {
       console.error('Error de login:', err);
-      setError(err.response?.data?.message || err.message || 'Credenciales inválidas');
+      setError(err.response?.data?.mensaje || err.message || 'Error al iniciar sesión');
     } finally {
       setLoading(false);
     }
