@@ -11,6 +11,27 @@ use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\LlantaController;
 use App\Http\Controllers\CotizacionController;
 
+// Health check endpoint para Railway
+Route::get('/health', function () {
+    try {
+        DB::connection()->getPdo();
+        return response()->json([
+            'status' => 'ok',
+            'database' => 'connected',
+            'timestamp' => now()->toISOString(),
+            'service' => 'llanteria-backend'
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'database' => 'disconnected',
+            'error' => $e->getMessage(),
+            'timestamp' => now()->toISOString(),
+            'service' => 'llanteria-backend'
+        ], 503);
+    }
+});
+
 // Rutas públicas
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

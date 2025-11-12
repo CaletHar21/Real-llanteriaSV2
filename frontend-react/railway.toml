@@ -1,0 +1,8 @@
+# Railway configuration for React frontend
+[deploy]
+healthcheckPath = "/"
+restartPolicyType = "ON_FAILURE"
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"

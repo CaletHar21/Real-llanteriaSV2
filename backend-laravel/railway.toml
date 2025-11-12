@@ -1,0 +1,9 @@
+# Railway configuration for Laravel backend
+[deploy]
+healthcheckPath = "/api/health"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"

@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// Configurar URL base usando variable de entorno
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+
 const API = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: API_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
@@ -10,7 +13,7 @@ const API = axios.create({
 
 export const login = async (data) => {
   console.log('🔍 LOGIN - Enviando datos:', data);
-  console.log('🔍 LOGIN - URL:', 'http://localhost:3000/api/login');
+  console.log('🔍 LOGIN - URL:', `${API_URL}/login`);
   
   try {
     const res = await API.post('/login', data);
