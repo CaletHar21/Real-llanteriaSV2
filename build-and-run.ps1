@@ -57,17 +57,10 @@ Write-Host ""
 Write-Host "====== APLICACIÓN LISTA ======" -ForegroundColor Green
 Write-Host "Frontend (React): http://localhost:5173" -ForegroundColor White
 Write-Host "Backend (Laravel): http://localhost:3000" -ForegroundColor White
-Write-Host "Base de datos (MySQL): localhost:3307" -ForegroundColor White
+Write-Host "Acceso a la aplicación:" -ForegroundColor Yellow
+Write-Host "- Frontend: http://localhost:5173" -ForegroundColor White
+Write-Host "- Backend API: http://localhost:3000/api" -ForegroundColor White
+Write-Host "- Base de datos (MySQL): localhost:3307" -ForegroundColor White
 Write-Host ""
-Write-Host "USUARIOS DE PRUEBA:" -ForegroundColor Yellow
-Write-Host "- caleth.torrez17@itca.edu.sv (contraseña: 1234566789) - ADMIN" -ForegroundColor White
-Write-Host "- cointra@llanteria.com (contraseña: 1234566789) - AGENTE" -ForegroundColor White
-Write-Host "- cliente@llanteria.com (contraseña: 1234566789) - CLIENTE" -ForegroundColor White
-Write-Host ""
-Write-Host "DATOS INCLUIDOS:" -ForegroundColor Yellow
-Write-Host "- 8 Marcas de llantas (Michelin, Bridgestone, Pirelli, etc.)" -ForegroundColor White
-Write-Host "- Modelos para cada marca" -ForegroundColor White
-Write-Host "- 3 Llantas de prueba con precios y stock" -ForegroundColor White
-Write-Host ""
-Write-Host "Para ver los logs: docker-compose logs -f" -ForegroundColor Gray
+Write-Host "Para ver logs: docker-compose logs -f" -ForegroundColor Gray
 Write-Host "Para detener: docker-compose down" -ForegroundColor Gray

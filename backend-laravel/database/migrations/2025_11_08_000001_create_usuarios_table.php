@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('TELEFONO');
             $table->string('DIRECCION');
             $table->string('PASSWORD');
-            $table->enum('ROL', ['CLIENTE', 'AGENTE', 'ADMIN'])->default('CLIENTE');
+            $table->enum('ROL', ['CLIENTE', 'AGENTE', 'ADMIN', 'usuario', 'conductor', 'mecanico', 'repartidor', 'asistencia_vial'])->default('CLIENTE');
             $table->timestamps();
         });
     }

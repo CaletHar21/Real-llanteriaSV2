@@ -129,6 +129,22 @@ export default function Perfil() {
           </div>
         </div>
         <div className="d-flex gap-2 mt-3">
+          {user.ROL === 'repartidor' && (
+            <button 
+              className="btn btn-success btn-sm" 
+              onClick={() => navigate('/admin/entregas')}
+            >
+              🚚 Ver Mis Entregas
+            </button>
+          )}
+          {user.ROL === 'asistencia_vial' && (
+            <button 
+              className="btn btn-warning btn-sm" 
+              onClick={() => navigate('/asistencia/solicitudes')}
+            >
+              🆘 Ver Mis Solicitudes
+            </button>
+          )}
           <button className="btn btn-outline-primary btn-sm" disabled>
             ✏️ Editar perfil (próximamente)
           </button>

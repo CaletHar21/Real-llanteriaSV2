@@ -1,0 +1,254 @@
+.admin-clientes-container {
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.clientes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.clientes-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 28px;
+}
+
+.clientes-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  min-width: 150px;
+}
+
+.stat-label {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.clientes-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.clientes-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.clientes-table thead {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+}
+
+.clientes-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.clientes-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ecf0f1;
+  color: #2c3e50;
+}
+
+.clientes-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-view,
+.btn-delete {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-view {
+  background: #3498db;
+  color: white;
+}
+
+.btn-view:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.btn-delete {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid #ecf0f1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-close:hover {
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.detail-group {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.detail-group:last-child {
+  border-bottom: none;
+}
+
+.detail-group label {
+  display: block;
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.detail-group p {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.role-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+}
+
+.role-usuario {
+  background: #3498db;
+}
+
+.alert-error {
+  background: #fadbd8;
+  color: #c0392b;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #c0392b;
+}
+
+.alert-success {
+  background: #d5f4e6;
+  color: #27ae60;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #27ae60;
+  font-weight: 500;
+  animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

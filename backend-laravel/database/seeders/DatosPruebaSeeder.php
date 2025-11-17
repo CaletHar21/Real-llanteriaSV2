@@ -155,6 +155,73 @@ class DatosPruebaSeeder extends Seeder
                 'ROL' => 'ADMIN'
             ]
         );
+
+        // Usuarios con nuevos roles para las nuevas funcionalidades
+        // Usuario tipo 'usuario' (comprador regular)
+        Usuario::updateOrCreate(
+            ['CORREO' => 'usuario1@llanteria.com'],
+            [
+                'NOMBRES' => 'María',
+                'APELLIDOS' => 'Martínez García',
+                'CORREO' => 'usuario1@llanteria.com',
+                'DUI' => '55667788-9',
+                'TELEFONO' => '7654321098',
+                'DIRECCION' => 'Santa Tecla, El Salvador',
+                'PASSWORD' => Hash::make('123456789'),
+                'ROL' => 'usuario'
+            ]
+        );
+
+        // Más usuarios tipo 'usuario'
+        for ($i = 2; $i <= 3; $i++) {
+            Usuario::updateOrCreate(
+                ['CORREO' => "usuario{$i}@llanteria.com"],
+                [
+                    'NOMBRES' => "Cliente{$i}",
+                    'APELLIDOS' => "Prueba García",
+                    'CORREO' => "usuario{$i}@llanteria.com",
+                    'DUI' => "6677889{$i}-0",
+                    'TELEFONO' => '7654321' . str_pad($i, 3, '0', STR_PAD_LEFT),
+                    'DIRECCION' => 'San Salvador, El Salvador',
+                    'PASSWORD' => Hash::make('123456789'),
+                    'ROL' => 'usuario'
+                ]
+            );
+        }
+
+        // Usuarios tipo 'conductor'
+        for ($i = 1; $i <= 2; $i++) {
+            Usuario::updateOrCreate(
+                ['CORREO' => "conductor{$i}@llanteria.com"],
+                [
+                    'NOMBRES' => "Conductor{$i}",
+                    'APELLIDOS' => "Pérez López",
+                    'CORREO' => "conductor{$i}@llanteria.com",
+                    'DUI' => "7788990{$i}-1",
+                    'TELEFONO' => '7777777' . str_pad($i, 3, '0', STR_PAD_LEFT),
+                    'DIRECCION' => 'San Salvador, El Salvador',
+                    'PASSWORD' => Hash::make('123456789'),
+                    'ROL' => 'conductor'
+                ]
+            );
+        }
+
+        // Usuarios tipo 'mecanico'
+        for ($i = 1; $i <= 2; $i++) {
+            Usuario::updateOrCreate(
+                ['CORREO' => "mecanico{$i}@llanteria.com"],
+                [
+                    'NOMBRES' => "Mecánico{$i}",
+                    'APELLIDOS' => "Técnico López",
+                    'CORREO' => "mecanico{$i}@llanteria.com",
+                    'DUI' => "8899001{$i}-2",
+                    'TELEFONO' => '6666666' . str_pad($i, 3, '0', STR_PAD_LEFT),
+                    'DIRECCION' => 'San Salvador, El Salvador',
+                    'PASSWORD' => Hash::make('123456789'),
+                    'ROL' => 'mecanico'
+                ]
+            );
+        }
         
         echo "✅ Usuarios creados en ambas tablas: users y usuarios\n";
     }

@@ -1,10 +1,13 @@
 #!/bin/bash
 
-echo "🚀 Iniciando backend Laravel..."
+echo "🚀 Iniciando backend Laravel con PHP-FPM + Nginx..."
 echo "==============================="
 
-# Instalar dependencias
-composer install
+# Generar APP_KEY si no existe
+if ! grep -q "^APP_KEY=" .env || grep -q "^APP_KEY=$" .env; then
+    echo "🔑 Generando APP_KEY..."
+    php artisan key:generate --force 2>&1 || true
+fi
 
 echo "⏳ Esperando que MySQL esté disponible..."
 # Esperar hasta que MySQL esté disponible
@@ -26,13 +29,13 @@ if [ $attempt -gt $max_attempts ]; then
     echo "❌ No se pudo conectar a MySQL, iniciando servidor sin DB..."
 else
     echo "📊 Ejecutando migraciones..."
-    php artisan migrate --force
+    php artisan migrate --force 2>&1 || true
     
     echo "🌱 Ejecutando seeders..."
-    php artisan db:seed --class=DatosPruebaSeeder --force
+    php artisan db:seed --class=DatosPruebaSeeder --force 2>&1 || true
     
     echo "✅ Base de datos configurada!"
 fi
 
 echo "🌐 Iniciando servidor Laravel en puerto 3000..."
-php artisan serve --host=0.0.0.0 --port=3000
+php artisan serve --host=0.0.0.0 --port=3000 --no-reload

@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
+import AdminLayout from './layouts/AdminLayout';
 import Home from './modules/core/Home';
 import Llantas from './modules/llantas/Llantas';
 import RegisterForm from './components/auth/RegisterForm';
@@ -10,6 +11,14 @@ import AdminLlantas from './components/admin/AdminLlantas';
 import AdminCotizaciones from './components/admin/AdminCotizaciones';
 import MisCotizaciones from './components/user/MisCotizaciones';
 import About from './components/pages/About';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminUsuarios from './pages/admin/AdminUsuarios';
+import AdminClientes from './pages/admin/AdminClientes';
+import AdminPedidos from './pages/admin/AdminPedidos';
+import AdminEntregas from './pages/admin/AdminEntregas';
+import AdminAsistencia from './pages/admin/AdminAsistencia';
+import AdminReportes from './pages/admin/AdminReportes';
+import RepartidorEntregas from './pages/repartidor/RepartidorEntregas';
 
 export default function App() {
   return (
@@ -71,9 +80,9 @@ export default function App() {
         path="/admin/llantas"
         element={
           <ProtectedRoute>
-            <Layout>
+            <AdminLayout>
               <AdminLlantas />
-            </Layout>
+            </AdminLayout>
           </ProtectedRoute>
         }
       />
@@ -81,12 +90,85 @@ export default function App() {
         path="/admin/cotizaciones"
         element={
           <ProtectedRoute>
-            <Layout>
+            <AdminLayout>
               <AdminCotizaciones />
-            </Layout>
+            </AdminLayout>
           </ProtectedRoute>
         }
       />
+      {/* Admin Dashboard con layout sidebar */}
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminDashboard />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/usuarios"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminUsuarios />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/clientes"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminClientes />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/pedidos"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminPedidos />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/entregas"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminEntregas />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/asistencia"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminAsistencia />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/reportes"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminReportes />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+
+
       <Route
         path="/cotizaciones"
         element={
@@ -94,6 +176,18 @@ export default function App() {
             <Layout>
               <MisCotizaciones />
             </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Rutas Repartidor */}
+      <Route
+        path="/repartidor/entregas"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <RepartidorEntregas />
+            </AdminLayout>
           </ProtectedRoute>
         }
       />

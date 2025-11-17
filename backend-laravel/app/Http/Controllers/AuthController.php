@@ -112,7 +112,8 @@ class AuthController extends Controller
             return response()->json(['mensaje' => '❌ Correo electrónico o contraseña incorrectos'], 401);
         }
 
-        $usuario->load(['vehiculos.marca', 'vehiculos.modelo']);
+        // No cargar relaciones en login para hacer más rápido
+        // $usuario->load(['vehiculos.marca', 'vehiculos.modelo']);
 
         $token = $usuario->createToken('llanteriaToken')->plainTextToken;
 

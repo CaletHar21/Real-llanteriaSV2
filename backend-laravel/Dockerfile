@@ -17,8 +17,18 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+# Crear .env si no existe
+RUN if [ ! -f .env ]; then cp .env.example .env 2>/dev/null || echo 'APP_KEY=base64:rGrREW3XdMHfVLnFr2Sn7ylxrGHTqwA3sefuXp5fu94=' > .env; fi
 
-EXPOSE ${PORT:-3000}
+# Asegurar que APP_KEY está configurado
+RUN grep -q 'APP_KEY=' .env || echo 'APP_KEY=base64:rGrREW3XdMHfVLnFr2Sn7ylxrGHTqwA3sefuXp5fu94=' >> .env
 
-CMD php artisan migrate --force && php artisan db:seed --class=DatosPruebaSeeder --force && php artisan serve --host=0.0.0.0 --port=${PORT:-3000}
+RUN composer install --no-interaction --no-dev --optimize-autoloader 2>&1 || true
+
+RUN chmod +x start-backend.sh
+
+RUN chmod +x start-backend.sh
+
+EXPOSE 3000
+
+CMD ["bash", "start-backend.sh"]

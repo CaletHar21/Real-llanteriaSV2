@@ -33,6 +33,9 @@ useEffect(() => {
 
 const login = async (token, usuario) => {
   localStorage.setItem('token', token);
+  localStorage.setItem('rol', usuario?.ROL || 'usuario');
+  localStorage.setItem('userId', usuario?.id || '');
+  localStorage.setItem('userName', usuario?.NOMBRES || usuario?.CORREO || 'Usuario');
   setUser(usuario);
 };
 

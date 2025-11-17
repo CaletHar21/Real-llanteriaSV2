@@ -27,9 +27,9 @@ export default function AuthNav() {
               type="button"
               className="btn btn-info btn-sm"
               data-mdb-ripple-init
-              onClick={() => navigate('/admin/llantas')}
+              onClick={() => navigate('/admin/dashboard')}
             >
-              Admin
+              ADMIN
             </button>
           )}
           <button

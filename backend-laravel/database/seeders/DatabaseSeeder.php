@@ -19,7 +19,12 @@ class DatabaseSeeder extends Seeder
     {
         // Ejecutar siempre los datos de prueba
         $this->call([
+            RolesSeeder::class,
             DatosPruebaSeeder::class,
+            RepartidoresSeeder::class,
+            PedidoSeeder::class,
+            EntregaSeeder::class,
+            AsistenciaVialSeeder::class,
             // DemoSeeder::class, // Deshabilitado temporalmente por tabla faltante
         ]);
     }
